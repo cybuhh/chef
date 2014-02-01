@@ -1,6 +1,7 @@
-nodes
+cache
 .idea
 .rake_test_cache
+.DS_Store
 
 ###
 # Ignore Chef key files and secrets
