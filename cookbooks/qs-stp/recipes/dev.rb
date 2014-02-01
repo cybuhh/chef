@@ -1,14 +1,16 @@
 #
 # Cookbook Name:: qs-stp
-# Recipe:: core
+# Recipe:: dev
 #
 # Copyright 2014, cybuhh
 #
-packages = [
-    "mc",
-    "vim",
-    "screen",
-    "openvpn",
+[
+    "apache2",
+    "php5",
+    "php5-curl",
+    "php5-gd",
+    "php5-intl",
+    "php5-mysql",
 ].each do |package|
     package package do
         action :install
