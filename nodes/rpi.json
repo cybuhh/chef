@@ -1,0 +1,6 @@
+{"run_list": [
+    "recipe[rpi::sendmail]",
+    "recipe[rpi::vnc]",
+    "recipe[rpi::xbmc]",
+    "recipe[rpi::timemachine]"
+]}

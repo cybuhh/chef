@@ -1,0 +1,5 @@
+{"run_list": [
+    "recipe[osx::mongodb]",
+    "recipe[osx::php]",
+    "recipe[osx::textmate-bundles]"
+]}
