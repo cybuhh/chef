@@ -7,8 +7,9 @@
 
 packages = [
     "lightdm",
+    "lightdm-gtk-greeter",
     "xfce4",
-    "chromium",  
+    "chromium-browser",
 ].each do |package|
     package package do
         action :install
@@ -20,27 +21,27 @@ template "/etc/lightdm/lightdm.conf" do
     mode 644
 end
 
-[
-    ".config",
-    ".config/autostart",
-    ".config/xfce4",
-    ".config/xfce4/desktop",
-].each do |tplPath|
-    directory "/home/#{node[:defaultUser]}/#{tplPath}" do
-        owner node[:defaultUser]
-        group node[:defaultUser]
-        mode 0755
-        recursive true
-        action :create
-    end
-end
-
 template "/home/#{node[:defaultUser]}/.config/autostart/chromium-autostart.desktop" do
 	source "chromium-autostart.desktop"
     owner node[:defaultUser]
     group node[:defaultUser]
     mode 0644
+    :create_if_missing
+end
+
+template "/etc/X11/default-display-manager" do
+    source "default-display-manager"
+    owner "root"
+    group "root"
+    mode 0644
     :create
+end
+
+execute "add_xsessionrc" do
+    filePath = "/home/#{node[:defaultUser]}/.xsessionrc"
+    fileContent = "startxfce4"
+    command "grep '^#{fileContent}' #{filePath} || echo '#{fileContent}' >> #{filePath}"
+    user node[:defaultUser]
 end
 
 service "lightdm" do
