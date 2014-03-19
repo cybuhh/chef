@@ -35,8 +35,6 @@ case "$DISTRO" in
 		;;
 esac
 
-else if [$DISTRO == 'CentOS']
-
 gem install knife-solo
 
 mkdir -p -m 755 /var/chef
