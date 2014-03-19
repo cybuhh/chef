@@ -32,12 +32,17 @@ end
     end
 end
 
-template "/home/#{node[:defaultUser]}/.config/autostart/chromium-autostart.desktop" do
-	source "chromium-autostart.desktop"
-    owner node[:defaultUser]
-    group node[:defaultUser]
-    mode 0644
-    action :create_if_missing
+[
+    "chromium-autostart.desktop",
+    "screensaver-disable.desktop"
+].each do |filename|
+    template "/home/#{node[:defaultUser]}/.config/autostart/#{filename}" do
+        source filename
+        owner node[:defaultUser]
+        group node[:defaultUser]
+        mode 0644
+        action :create_if_missing
+    end
 end
 
 template "/etc/X11/default-display-manager" do
@@ -45,18 +50,17 @@ template "/etc/X11/default-display-manager" do
     owner "root"
     group "root"
     mode 0644
-    :create
+    action :create
 end
 
 [
-    "xset s off",
-    "xset -dpms",
-    "xset s noblank",
+    "sleep 250 && xset s noblank ; xset s 0 0 ; xset s off"
 ].each do |fileContent|
     execute "add_xsessionrc" do
         filePath = "/home/#{node[:defaultUser]}/.xsessionrc"
         command "grep '^#{fileContent}' #{filePath} || echo '#{fileContent}' >> #{filePath}"
         user node[:defaultUser]
+        action :nothing
     end
 end
 
