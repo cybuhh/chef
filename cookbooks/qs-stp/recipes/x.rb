@@ -4,7 +4,6 @@
 #
 # Copyright 2014, cybuhh
 #
-
 packages = [
     "lightdm",
     "lightdm-gtk-greeter",
@@ -19,6 +18,14 @@ end
 template "/etc/lightdm/lightdm.conf" do
     source "lightdm.conf"
     mode 644
+end
+
+directory "/home/#{node[:defaultUser]}/.config/autostart" do
+    mode 0755
+    owner node[:defaultUser]
+    group node[:defaultUser]
+    action :create
+    recursive true
 end
 
 template "/home/#{node[:defaultUser]}/.config/autostart/chromium-autostart.desktop" do
