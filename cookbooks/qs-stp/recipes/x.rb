@@ -37,7 +37,7 @@ template "/home/#{node[:defaultUser]}/.config/autostart/chromium-autostart.deskt
     owner node[:defaultUser]
     group node[:defaultUser]
     mode 0644
-    :create_if_missing
+    action :create_if_missing
 end
 
 template "/etc/X11/default-display-manager" do

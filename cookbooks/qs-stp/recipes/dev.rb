@@ -7,7 +7,6 @@
 [
 	"memcached",
 	"rake",
-    "apache2",
     "php-pear",
     "php5",
     "php5-cli",

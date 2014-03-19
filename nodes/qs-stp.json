@@ -1,7 +1,8 @@
 {"run_list": [
     "recipe[qs-stp::core]",
+    "recipe[qs-stp::dev]",
+    "recipe[qs-stp::apache]",
     "recipe[qs-stp::x]",
     "recipe[qs-stp::vnc]",
-    "recipe[qs-stp::flashplugin]",
-    "recipe[qs-stp::dev]"
+    "recipe[qs-stp::flashplugin]"
 ]}
