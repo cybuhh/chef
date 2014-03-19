@@ -1,9 +1,6 @@
 <VirtualHost *:80>
 	ServerAdmin webmaster@localhost
 
-	ServerName localhost
-	ServerAlias stp-vg-minmote
-
 	DocumentRoot /var/www/public
 	<Directory />
 		Options FollowSymLinks
