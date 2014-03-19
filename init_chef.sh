@@ -23,8 +23,7 @@ else
 fi
 
 case "$DISTRO" in
-	Debian)
-	Ubuntu)
+	Debian|Ubuntu)
 		initDebian
 		;;
 	CentOS)
