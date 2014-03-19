@@ -24,11 +24,11 @@ case node["platform"]
 end
 
 execute "apt_get_update" do
-	command "apt-get update"
+	command "apt-get autoclean && apt-get update"
 	action :nothing
 end
 
-packages = [
+[
     "mc",
     "vim",
     "screen",
