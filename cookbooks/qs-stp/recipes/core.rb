@@ -5,18 +5,27 @@
 # Copyright 2014, cybuhh
 #
 case node["platform"]
-when "debian"
-	template "/etc/apt/sources.list" do
-	    source "sources.list"
-	    mode 644
-	    owner 'root'
-	    group 'root'
-	    backup 5
-	end
-when "ubuntu"
-	
-when "redhat", "centos", "fedora"
 
+	when "debian"
+		template "/etc/apt/sources.list" do
+		    source "sources.list"
+		    mode 644
+		    owner 'root'
+		    group 'root'
+		    action :create
+		    backup 5
+		    notifies :run, "execute[apt_get_update]"
+		end
+
+	when "ubuntu"
+		
+	when "redhat", "centos", "fedora"
+
+end
+
+execute "apt_get_update" do
+	command "apt-get update"
+	action :nothing
 end
 
 packages = [

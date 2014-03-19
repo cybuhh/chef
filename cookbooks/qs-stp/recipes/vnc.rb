@@ -19,6 +19,7 @@ execute "store_password" do
     passwd = "x11vnc"
     command "x11vnc -storepasswd #{passwd} /home/#{node[:defaultUser]}/.vnc/passwd"
     user node[:defaultUser]
+    notifies :run, "execute[add_xsessionrc]"
 end
 
 execute "add_xsessionrc" do
@@ -26,4 +27,5 @@ execute "add_xsessionrc" do
     fileContent = "x11vnc -display :0 -noipv6 -forever -usepw &"
     command "grep '^#{fileContent}' #{filePath} || echo '#{fileContent}' >> #{filePath}"
     user node[:defaultUser]
+    action :nothing
 end
