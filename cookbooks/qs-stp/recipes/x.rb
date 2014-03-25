@@ -1,4 +1,5 @@
 #
+#
 # Cookbook Name:: qs-stp
 # Recipe:: x
 #
@@ -7,7 +8,6 @@
 [
     "lightdm",
     "lightdm-gtk-greeter",
-    "xfce4",
     "chromium-browser",
 ].each do |packageName|
     package packageName do
