@@ -66,7 +66,7 @@ greeter-session=lightdm-greeter
 greeter-hide-users=true
 #greeter-allow-guest=true
 #greeter-show-manual-login=false
-user-session=LXDE
+user-session=<%= node[:default_session] %>
 #allow-guest=true
 #guest-session=UNIMPLEMENTED
 session-wrapper=/etc/X11/Xsession
@@ -75,7 +75,7 @@ session-wrapper=/etc/X11/Xsession
 #session-setup-script=
 #session-cleanup-script=
 #autologin-guest=false
-autologin-user=stp
+autologin-user=<%= node[:default_user] %>
 #autologin-user-timeout=0
 #autologin-session=UNIMPLEMENTED
 #exit-on-failure=false

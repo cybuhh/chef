@@ -16,7 +16,7 @@
 end
 
 template "/etc/lightdm/lightdm.conf" do
-    source "lightdm.conf"
+    source "lightdm.conf.erb"
     mode 644
 end
 
@@ -24,10 +24,10 @@ end
     ".config",
     ".config/autostart",
 ].each do |path|
-    directory "/home/#{node[:defaultUser]}/#{path}" do
+    directory "/home/#{node[:default_user]}/#{path}" do
         mode 0755
-        owner node[:defaultUser]
-        group node[:defaultUser]
+        owner node[:default_user]
+        group node[:default_user]
         action :create
     end
 end
@@ -36,10 +36,10 @@ end
     "chromium-autostart.desktop",
     "screensaver-disable.desktop"
 ].each do |filename|
-    template "/home/#{node[:defaultUser]}/.config/autostart/#{filename}" do
+    template "/home/#{node[:default_user]}/.config/autostart/#{filename}" do
         source filename
-        owner node[:defaultUser]
-        group node[:defaultUser]
+        owner node[:default_user]
+        group node[:default_user]
         mode 0644
         action :create_if_missing
     end
@@ -57,13 +57,22 @@ end
     "sleep 250 && xset s noblank ; xset s 0 0 ; xset s off"
 ].each do |fileContent|
     execute "add_xsessionrc" do
-        filePath = "/home/#{node[:defaultUser]}/.xsessionrc"
+        filePath = "/home/#{node[:default_user]}/.xsessionrc"
         command "grep '^#{fileContent}' #{filePath} || echo '#{fileContent}' >> #{filePath}"
-        user node[:defaultUser]
+        user node[:default_user]
         action :nothing
     end
 end
 
+template "/home/#{node[:default_user]}/.dmrc" do
+    source "dmrc.erb"
+    mode 0644
+    owner node[:default_user]
+    group node[:default_user]
+#    action :create
+    action :nothing
+end
+
 service "lightdm" do
-    action :restart
+#    action :restart
 end

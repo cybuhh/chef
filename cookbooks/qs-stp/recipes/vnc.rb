@@ -8,24 +8,24 @@ package "x11vnc" do
     action :install
 end
 
-directory "/home/#{node[:defaultUser]}/.vnc" do
-    owner node[:defaultUser]
-    group node[:defaultUser]
+directory "/home/#{node[:default_user]}/.vnc" do
+    owner node[:default_user]
+    group node[:default_user]
     mode 0700
     action :create
 end
 
 execute "store_password" do
     passwd = "x11vnc"
-    command "x11vnc -storepasswd #{passwd} /home/#{node[:defaultUser]}/.vnc/passwd"
-    user node[:defaultUser]
+    command "x11vnc -storepasswd #{passwd} /home/#{node[:default_user]}/.vnc/passwd"
+    user node[:default_user]
     notifies :run, "execute[add_xsessionrc]"
 end
 
 execute "add_xsessionrc" do
-    filePath = "/home/#{node[:defaultUser]}/.xsessionrc"
+    filePath = "/home/#{node[:default_user]}/.xsessionrc"
     fileContent = "x11vnc -display :0 -noipv6 -forever -usepw &"
     command "grep '^#{fileContent}' #{filePath} || echo '#{fileContent}' >> #{filePath}"
-    user node[:defaultUser]
+    user node[:default_user]
     action :nothing
 end

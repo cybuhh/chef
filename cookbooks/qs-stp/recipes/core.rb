@@ -39,9 +39,9 @@ end
     end
 end
 
-user node[:defaultUser] do
+user node[:default_user] do
 	supports :manage_home => true
 	comment "Default User"
-	home "/home/#{node[:defaultUser]}"
+	home "/home/#{node[:default_user]}"
 	action :create
 end

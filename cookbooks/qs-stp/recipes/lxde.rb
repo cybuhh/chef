@@ -12,11 +12,3 @@
         action :install
     end
 end
-
-template "/home/#{node[:defaultUser]}/.dmrc" do
-    source "dmrc"
-    mode 0644
-    owner node[:defaultUser]
-    group node[:defaultUser]
-    action :create
-end

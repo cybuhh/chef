@@ -3,7 +3,7 @@
     "recipe[qs-stp::dev]",
     "recipe[qs-stp::apache]",
     "recipe[qs-stp::x]",
-    "recipe[qs-stp::lxde]",
+    "recipe[qs-stp::xfce4]",
     "recipe[qs-stp::vnc]",
     "recipe[qs-stp::flashplugin]"
 ]}
