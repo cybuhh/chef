@@ -3,5 +3,5 @@ Version=1.0
 Type=Application
 Name=Chomium
 Comment=Web Browser
-Exec=chromium --kiosk http://www.smashingmagazine.com
+Exec=chromium --kiosk http://127.0.0.1
 Icon=chromium
