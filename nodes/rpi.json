@@ -2,5 +2,6 @@
     "recipe[rpi::sendmail]",
     "recipe[rpi::vnc]",
     "recipe[rpi::xbmc]",
-    "recipe[rpi::timemachine]"
+    "recipe[rpi::timemachine]",
+    "recipe[rpi::deluge]"
 ]}
