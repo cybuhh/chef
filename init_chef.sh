@@ -8,12 +8,16 @@ fi
 function initDebian() {
     apt-get update
 	apt-get dist-upgrade
-	apt-get install sudo ssh rsync ruby ruby-dev
+	apt-get install ssh rsync ruby ruby-dev
 }
 
 function initCentOS() {
 	yum update
-    yum install sudo ssh rsync ruby ruby-dev
+    yum install ssh rsync ruby ruby-dev
+}
+
+function initMacOX() {
+    xcodebuild -license
 }
 
 if [ -f /etc/issue ]; then
@@ -23,11 +27,14 @@ else
 fi
 
 case "$DISTRO" in
-	Debian|Ubuntu)
+	Debian|Ubuntu|Raspbian)
 		initDebian
 		;;
 	CentOS)
 		initCentOS
+		;;
+	Darwin*)
+		initMacOX
 		;;
 	*)
 		echo "Sorry, I don't know how to init for '$DISTRO'."
@@ -47,4 +54,3 @@ data_bag_path "#{chef_repo_path}/data_bags"
 role_path "#{chef_repo_path}/roles"
 environment_path "#{chef_repo_path}/environments”
 EOF
-
