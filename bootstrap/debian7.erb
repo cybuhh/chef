@@ -1,0 +1,18 @@
+bash -c '
+apt-get -y update
+apt-get -y dist-upgrade
+
+curl -L https://www.chef.io/chef/install.sh | sudo bash
+
+mkdir -p -m 755 /var/chef
+mkdir -p -m 755 /etc/chef
+
+cat > /etc/chef/solo.rb <<'EOP'
+chef_repo_path "/var/chef"
+cookbook_path "#{chef_repo_path}/cookbooks"
+data_bag_path "#{chef_repo_path}/data_bags"
+role_path "#{chef_repo_path}/roles"
+environment_path "#{chef_repo_path}/environments"
+
+EOP
+'
