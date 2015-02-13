@@ -21,7 +21,7 @@ SSL_LOCALITY_NAME = "Locality"
 SSL_ORGANIZATIONAL_UNIT_NAME = "Operations"
 
 # The SSL contact email address
-SSL_EMAIL_ADDRESS = "mateusz.cyburt@gmail.om"
+SSL_EMAIL_ADDRESS = ""
 
 # License for new Cookbooks
 # Can be :apachev2 or :none
