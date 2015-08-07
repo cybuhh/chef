@@ -1,0 +1,47 @@
+#! /bin/sh
+
+### BEGIN INIT INFO
+# Provides:		    youtrack
+# Default-Start:	2 3 4 5
+# Default-Stop:
+# Short-Description: Free keyboard-centric, fully customizable issue and bug tracker with query-based issue search and batch modification commands.
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+app_name=youtrack
+pid_file="/var/run/$app_name.pid"
+cli_cmd="java -Xmx1g -XX:MaxPermSize=250m -Djava.awt.headless=true -jar <%= node[:install_path] %>/youtrack-*.jar 0.0.0.0:<%= node[:port]%>"
+
+case "$1" in
+    start)
+        if start-stop-daemon --start --quiet --oknodo --pidfile $pid_file --exec "$cli_cmd" ; then
+            log_end_msg 0 || true
+        else
+            log_end_msg 1 || true
+        fi
+    ;;
+
+    stop)
+        if start-stop-daemon --stop --quiet --oknodo --pidfile $pid_file; then
+            log_end_msg 0 || true
+        else
+            log_end_msg 1 || true
+        fi
+    ;;
+
+    restart)
+
+    ;;
+
+    status)
+        status_of_proc -p $pid_file /usr/sbin/sshd $app_name && exit 0 || exit $?
+    ;;
+
+    *)
+        log_action_msg "Usage: /etc/init.d/$0 {start|stop|restart|status}" || true
+        exit 1
+    ;;
+esac
+
+exit 0

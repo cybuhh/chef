@@ -1,0 +1,5 @@
+Sendmail Cookbook
+============
+
+Usage
+-----
