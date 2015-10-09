@@ -1,0 +1,6 @@
+{"run_list": [
+    "recipe[core::core]",
+    "recipe[qs-stp::core]",
+    "recipe[qs-stp::dev]",
+    "recipe[qs-stp::apache]"
+]}
