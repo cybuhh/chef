@@ -2,6 +2,7 @@ cache
 .idea
 .rake_test_cache
 .DS_Store
+*.iml
 
 ###
 # Ignore Chef key files and secrets
