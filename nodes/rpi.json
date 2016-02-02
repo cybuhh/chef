@@ -1,8 +1,13 @@
-{"run_list": [
-    "recipe[core]",
-    "recipe[rpi::sendmail]",
-    "recipe[rpi::vnc]",
-    "recipe[rpi::xbmc]",
-    "recipe[rpi::timemachine]",
-    "recipe[rpi::deluge]"
-]}
+{
+    "run_list": [
+        "recipe[kodi]"
+    ],
+    "automatic": {
+        "ipaddress": "192.168.0.69"
+    },
+    "normal": {
+        "kodi": {
+            "startup_enabled": "1"
+        }
+    }
+}

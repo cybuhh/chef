@@ -1,4 +1,4 @@
-XBMC Cookbook
+Kodi Cookbook
 ============
 
 Usage
