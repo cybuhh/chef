@@ -9,7 +9,7 @@ package "kodi" do
 end
 
 template "/etc/default/kodi" do
-    source "sites-available/#{configName}"
+    source "kodi.erb"
     mode 644
     owner 'root'
     group 'root'
