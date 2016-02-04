@@ -1,13 +1,8 @@
 {
     "run_list": [
-        "recipe[kodi]"
+        "role[kodi]"
     ],
     "automatic": {
         "ipaddress": "192.168.0.69"
-    },
-    "normal": {
-        "kodi": {
-            "startup_enabled": "1"
-        }
     }
 }

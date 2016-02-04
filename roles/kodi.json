@@ -1,0 +1,16 @@
+{
+    "name": "kodi",
+    "default_attributes": {
+        "kodi": {
+            "startup_enabled": "1"
+        }
+    },
+    "json_class": "Chef::Role",
+    "env_run_lists": {
+    },
+    "run_list": [
+        "recipe[kodi]"
+    ],
+    "description": "Kodi with startup by default enabled",
+    "chef_type": "role"
+}
