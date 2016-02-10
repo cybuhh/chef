@@ -23,9 +23,9 @@ execute "store_password" do
 end
 
 execute "add_xsessionrc" do
-    filePath = "/home/#{node[:default_user]}/.xsessionrc"
-    fileContent = "x11vnc -display :0 -noipv6 -forever -usepw &"
-    command "grep '^#{fileContent}' #{filePath} || echo '#{fileContent}' >> #{filePath}"
+    file_path = "/home/#{node[:default_user]}/.xsessionrc"
+    file_content = "x11vnc -display :0 -noipv6 -forever -usepw &"
+    command "grep '^#{file_content}' #{file_path} || echo '#{file_content}' >> #{file_path}"
     user node[:default_user]
     action :nothing
 end
