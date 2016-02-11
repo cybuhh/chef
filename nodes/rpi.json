@@ -1,7 +1,7 @@
 {
     "run_list": [
         "role[kodi]",
-        "recipe[x11:vnc]"
+        "recipe[x11::vnc]"
     ],
     "automatic": {
         "ipaddress": "192.168.0.69"
