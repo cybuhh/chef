@@ -1,6 +1,7 @@
 {
     "run_list": [
         "role[kodi]",
+        "recipe[x11::synergy]",
         "recipe[x11::vnc]"
     ],
     "automatic": {
