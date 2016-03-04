@@ -1,6 +1,8 @@
 {
     "run_list": [
+        "role[rpi]",
         "role[kodi]",
+        "recipe[deluge]",
         "recipe[x11::synergy]",
         "recipe[x11::vnc]"
     ],

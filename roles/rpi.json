@@ -1,0 +1,11 @@
+{
+    "name": "rpi",
+    "default_attributes": {
+        "default_user": "pi"
+    },
+    "json_class": "Chef::Role",
+    "env_run_lists": {
+    },
+    "description": "Rasbpberry Pi node",
+    "chef_type": "role"
+}
